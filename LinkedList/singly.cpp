@@ -110,6 +110,19 @@ class LinkedList {
         delete del;
     }
 
+    void reverseList() {
+        Node* prev = NULL;
+        Node* current = head;
+        Node* next = NULL;
+
+        while (current != NULL) {
+            next = current->next;
+            current->next = prev;
+            prev = current;
+            current = next;
+        }
+        head = prev;
+    }
 
     void printNode() {
         Node* temp = head;
@@ -145,6 +158,15 @@ int main() {
     list.printNode();
 
     list.deleteFromEnd();
+    list.printNode();
+
+    list.reverseList();
+    list.printNode();
+
+    list.insertNode(10);
+    list.printNode();
+
+    list.deleteFromBeginning();
     list.printNode();
 
 }
