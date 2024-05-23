@@ -49,8 +49,32 @@ class LinkedList {
     void insertBeforeData(int bdata, int data) {
         Node* newNode = new Node(data);
 
+        if (head->data == bdata) {
+            insertBeg(data);
+            return;
+        }
+
         Node* temp = head;
         while (temp->next->data != bdata) {
+            temp = temp->next;
+        }
+        newNode->next = temp->next;
+        temp->next = newNode;
+    }
+
+    void insertAfterData(int adata, int data) {
+        Node* newNode = new Node(data);
+
+        Node* temp = head;
+        while (temp->data != adata) {
+            temp = temp->next;
+        }
+        newNode->next = temp->next;
+        temp->next = newNode;
+    }
+
+    void deleteNode(int data) {
+        if (head->data == data) {
             
         }
     }
@@ -75,6 +99,9 @@ int main() {
     list.insertNode(11);
 
     list.insertBeg(0);
+
+    list.insertBeforeData(3, 5);
+    list.insertBeforeData(0, -1);
 
     list.printNode();
 }
